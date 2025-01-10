@@ -12,7 +12,7 @@ module.exports = defineConfig({
     openMode: 1
   },
   e2e: {
-    specPattern: 'CypressDemo/e2e/**/*.{js,jsx,ts,tsx}',
+    specPattern: 'C:/CypressDemo/e2e/**/*.{js,jsx,ts,tsx}',
     experimentalSessionAndOrigin: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
