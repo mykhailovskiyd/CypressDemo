@@ -6,3 +6,5 @@ cypress/videos/.*mp4
 *.xml
 *.html
 .vscode
+key
+key.pub
