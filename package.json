@@ -2,10 +2,9 @@
   "name": "cypress-demo",
   "version": "1.0",
   "description": "Training framework",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "devDependencies": {
-    "cypress": "^13.17.0"
+    "cypress": "^13.17.0",
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
