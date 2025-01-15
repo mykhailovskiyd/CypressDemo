@@ -1,26 +1,28 @@
 /// <reference types="cypress" />
+import LogInPage from "C:/CypressDemo/cypress/support/pages/LoginPage"
+import WhatsNewPage from "C:/CypressDemo/cypress/support/pages/WhatsNewPage"
+import ProductPage from "C:/CypressDemo/cypress/support/pages/ProductPage"
 
 describe("Login scenarios", () => {
-    // it("wishlist", () => {
-    //     cy.visit("https://magento.softwaretestingboard.com/customer/account/login/")
-    //     cy.wait(3000)
-    //     cy.get("#email").type("delmoruch77@gmail.com")
-    //     cy.get("#pass").type("kvartirmeisteR322")
-    //     cy.get("button.action.login.primary").click()
-    //     cy.get('a#ui-id-3', { timeout: 2000 }).click()
-    //     cy.get(".product-item-name a").each(($element, index, $list) => {
-    //         var productName = $element.text()
-    //         if (productName.includes("Summit Watch")) {
-    //             cy.get(".product-item-name a").eq(index).click()
-    //         }
-    //     })
-    //     cy.wait(3000)
-    //     cy.get("a.action.towishlist").click()
-    //     cy.wait(3000)
-    //     cy.get("div.message-success.success.message").should("be.visible")
-    //     cy.get("div.message-success.success.message").should("contain", "Summit Watch")
 
-    // })
+    var logInPage = new LogInPage
+    var whatsNewPage = new WhatsNewPage
+    var productPage = new ProductPage
+
+
+    it("wishlist", () => {
+        logInPage.openLogInPage()
+        cy.wait(3000)
+        logInPage.authorize("delmoruch77@gmail.com", "kvartirmeisteR322")
+        logInPage.chooseWhatsNew()
+        whatsNewPage.openProductDetails("Summit Watch")
+        cy.wait(3000)
+        productPage.addToWishList()
+        cy.wait(3000)
+        productPage.verifySuccessMessageIsVisible()
+        productPage.verifySuccessMessageHasText("Summit Watch")
+
+    })
     it("cart", () => {
         cy.visit("https://magento.softwaretestingboard.com/customer/account/login/")
         cy.wait(3000)
