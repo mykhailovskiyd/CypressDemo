@@ -2,18 +2,27 @@
 import LogInPage from "C:/CypressDemo/cypress/support/pages/LoginPage"
 import WhatsNewPage from "C:/CypressDemo/cypress/support/pages/WhatsNewPage"
 import ProductPage from "C:/CypressDemo/cypress/support/pages/ProductPage"
+import MyAccountPage from "C:/CypressDemo/cypress/support/pages/MyAccountPage"
 
 describe("Login scenarios", () => {
 
     var logInPage = new LogInPage
     var whatsNewPage = new WhatsNewPage
     var productPage = new ProductPage
+    var myAccountPage = new MyAccountPage
+
+    beforeEach(() => {
+        cy.session("session", () => {
+            logInPage.openLogInPage()
+            cy.wait(3000)
+            logInPage.authorize("delmoruch77@gmail.com", "kvartirmeisteR322")
+        })
+    })
 
 
     it("wishlist", () => {
-        logInPage.openLogInPage()
-        cy.wait(3000)
-        logInPage.authorize("delmoruch77@gmail.com", "kvartirmeisteR322")
+        
+        myAccountPage.openMyAccountPage()
         logInPage.chooseWhatsNew()
         whatsNewPage.openProductDetails("Summit Watch")
         cy.wait(3000)
@@ -24,11 +33,8 @@ describe("Login scenarios", () => {
 
     })
     it("cart", () => {
-        cy.visit("https://magento.softwaretestingboard.com/customer/account/login/")
-        cy.wait(3000)
-        cy.get("#email").type("delmoruch77@gmail.com")
-        cy.get("#pass").type("kvartirmeisteR322")
-        cy.get("button.action.login.primary").click()
+        
+        myAccountPage.openMyAccountPage()
         cy.wait(2000)
         cy.get('a#ui-id-3', { timeout: 2000 }).click()
         cy.get("body > div:nth-child(5) > main:nth-child(4) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)").click()
