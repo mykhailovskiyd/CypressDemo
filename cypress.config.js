@@ -13,6 +13,10 @@ module.exports = defineConfig({
     runMode: 1,
     openMode: 1
   },
+  env: {
+    grepOmitFiltered: true
+  },
+  trashAssetsBeforeRuns: true,
   e2e: {
     specPattern: 'C:/CypressDemo/e2e/**/*.{js,jsx,ts,tsx}',
     experimentalSessionAndOrigin: true,

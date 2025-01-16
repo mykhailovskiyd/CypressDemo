@@ -2,8 +2,18 @@
   "name": "cypress-demo",
   "version": "1.0",
   "description": "Training framework",
-  "scripts": {},
+  "scripts": {
+    "all_test": "npx cypress run",
+    "spec_select": "npx cypress run --spec C:/CypressDemo/e2e/CBDDTest.spec.js --headed",
+    "browser_report": "npx cypress run --spec C:/CypressDemo/e2e/CBDDTest.spec.js --reporter mochawesome --browser chrome",
+    "chrome": "npx cypress run --spec C:/CypressDemo/e2e/CBDDTest.spec.js --browser chrome",
+    "cloud_report": "npx cypress run --browser chrome --spec C:/CypressDemo/e2e/CBDDTest.spec.js --headed --record --key 07c414aa-50e8-4cb3-a749-48e66abde358",
+    "test_cases_set_one_tag": "npx cypress run --browser chrome --env grepTags=smoke",
+    "test_cases_set_two_tags": "npx cypress run --browser chrome --env grepTags=\"smoke regression\"",
+    "test_cases_set_both_tags": "npx cypress run --browser chrome --env grepTags=smoke+regression"
+  },
   "devDependencies": {
+    "@cypress/grep": "^4.1.0",
     "cypress": "^13.17.0",
     "cypress-mochawesome-reporter": "^3.8.2"
   },

@@ -22,7 +22,7 @@ describe("Login scenarios", () => {
     })
 
 
-    it("wishlist", () => {
+    it("wishlist", { tags: ['smoke', 'regression'] }, () => {
 
         myAccountPage.openMyAccountPage()
         logInPage.chooseWhatsNew()
@@ -34,7 +34,7 @@ describe("Login scenarios", () => {
         productPage.verifySuccessMessageHasText("Summit Watch")
 
     })
-    it("cart", () => {
+    it("cart", { tags: ['regression'] }, () => {
 
         myAccountPage.openMyAccountPage()
         cy.wait(2000)
