@@ -5,18 +5,18 @@ import HeaderFragments from "C:/CypressDemo/cypress/support/fragments/HeaderFrag
 var headerFragments = new HeaderFragments
 
 class LogInPage {
-    openLogInPage(){
-        cy.visit("https://magento.softwaretestingboard.com/customer/account/login/")
-        
+    openLogInPage() {
+        cy.visit(Cypress.env('domain_baseurl') + links.logInPage)
+
     }
-    authorize(email, password){
+    authorize(email, password) {
         cy.get(LogInPageSelectors.emailTextbox).type(email)
         cy.get(LogInPageSelectors.passTextbox).type(password)
         cy.get(LogInPageSelectors.signInButton).click()
 
     }
 
-    chooseWhatsNew(){
+    chooseWhatsNew() {
         headerFragments.goToWhatsNew()
     }
 }

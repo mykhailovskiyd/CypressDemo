@@ -11,17 +11,19 @@ describe("Login scenarios", () => {
     var productPage = new ProductPage
     var myAccountPage = new MyAccountPage
 
+    before(() => {
+        cy.initFixtures()
+    })
+
     beforeEach(() => {
         cy.session("session", () => {
-            logInPage.openLogInPage()
-            cy.wait(3000)
-            logInPage.authorize("delmoruch77@gmail.com", "kvartirmeisteR322")
+            cy.signIn()
         })
     })
 
 
     it("wishlist", () => {
-        
+
         myAccountPage.openMyAccountPage()
         logInPage.chooseWhatsNew()
         whatsNewPage.openProductDetails("Summit Watch")
@@ -33,7 +35,7 @@ describe("Login scenarios", () => {
 
     })
     it("cart", () => {
-        
+
         myAccountPage.openMyAccountPage()
         cy.wait(2000)
         cy.get('a#ui-id-3', { timeout: 2000 }).click()

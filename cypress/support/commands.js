@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import LogInPage from "C:/CypressDemo/cypress/support/pages/LoginPage"
+var logInPage = new LogInPage
+
+Cypress.Commands.add('initFixtures', () => {
+    cy.fixture("links").then((links) => {
+        globalThis.links = links;
+    })
+    cy.fixture("credentials").then((credentials) => {
+        globalThis.credentials = credentials;
+    })
+})
+
+Cypress.Commands.add('signIn', () => {
+    logInPage.openLogInPage()
+    cy.wait(3000)
+    logInPage.authorize(credentials.email, credentials.password)
+})

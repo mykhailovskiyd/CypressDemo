@@ -2,7 +2,7 @@
 
 class MyAccountPage{
     openMyAccountPage(){
-        cy.visit("https://magento.softwaretestingboard.com/customer/account/")
+        cy.visit(Cypress.env('domain_baseurl') + links.myAccountPage)
     }
 }
 
